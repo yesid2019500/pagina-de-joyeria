@@ -1,0 +1,324 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --purple-dark:#170312;
+    --purple-medium: #33032d;
+    --purple-light: #531253;
+    --gray-light: #eaeaea;
+    --white: #f4fffd;
+}
+
+body{
+    font-size: 20px;
+ font-family: 'Open Sans Condensed', sans-serif;
+
+}
+
+p{
+    font-size: 22px;
+}
+
+/* EL HEADER */
+.contenido-header{
+    width: 100%;
+    height: 100vh;
+background: url(../img/bg-girl.jpeg) no-repeat;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+animation: movimiento 12s infinite linear alternate;
+}
+
+@keyframes movimiento{
+    from{
+        background-position: bottom left;
+    }to{
+        background-position: top right;
+    }
+}
+
+.contenido-header .fondo{
+    /* el rpimer with es si queremos que se vea el fondo que esta debajo */
+    /* width: 100%; */
+    width: 0;
+    height: 100%;
+    max-width: 100%;
+    background-image: url(../img/bg-top.png);
+}
+.contenido-header .texto{
+    /* con la propiedad calc, desaparece el scroll a los lados. para que se ajuste y no se vea el scrool hacia los lados*/
+    width: calc(100vw - 20px);
+    /* el rpimer with es si queremos que se vea el fondo que esta debajo */
+    /* width: 100%; */
+    height: 100vh;
+    /* este bachroun con la convinacion del heigh 100 y width 100. da un efecto interesante. en otros proyectos se puede utilizar */
+    /* background: rgba(0,0,0,.5); */
+
+    /* PARA CENTRAR EL TEXTO */
+    font-size: 90px;
+    font-weight: 400;
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: purple;
+    /* ESTA PROPIEDAD ES PARA DARLE UNA LIJERA TRANSPARENCIA AL TEXTO */
+    mix-blend-mode: multiply;
+}
+
+/* ESTILOSS MENU */
+
+.menu{
+    background: var(--purple-medium);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    padding: 12px;
+    z-index: 100;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'noto serif';
+    font-style: italic;
+    margin-bottom: 60px;
+}
+
+.menu a{
+    /* la propiedda inline block es para modificar su paddin, ya que son por defecto inline */
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 30px;
+    font-size: 26px;
+    background: var(--purple-medium);
+    margin: 0 10px;
+    transition: .5s ease all;
+    color:  var(--gray-light);
+}
+
+.menu a:hover{
+    /* esta propiedad es para que se desplaze hacia abajo */
+    transform: translateY(18px);
+    background: var(--purple-light);
+}
+
+.nosotros{
+    margin-bottom: 60px;
+
+}
+
+.subtitulo{
+    font-size: 20px;
+    color: var(--purple-dark);
+    font-family: 'noto', Times, serif;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.subtitulo span{
+background: var(--gray-light);
+padding: 0 15px;
+z-index: 99;
+/* EL POSITION RELATIVE ES PARA QUE EL Z-INDEZ SE PUEDADA APLICAR */
+position: relative;
+}
+
+/* esto es para la liena */
+.subtitulo::after{
+    content: "";
+    /* INLINE BLOCK ES PARA MOFIFICAR SU ALTURA */
+    display: inline-block;
+    height:2px ;
+    width: 100%;
+    background: var(--purple-dark);
+    position: relative;
+    top: -29px;
+    /* con este z-index el la lian estar por debajo des texto */
+    z-index:1;
+}
+.nosotros .titulo{
+    width: 70%;
+    font-size: 44px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.nosotros .enlace{
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--purple-light);
+    font-weight: 700;
+    /* ESTO YA ES PARA EL EFECTO DE TRANSICION EN LE TEXTO */
+    border-bottom: 1px solid transparent;
+    transition: .3s ease all;
+}
+
+.nosotros .enlace:hover{
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-bottom: 1px solid var(--purple-light);
+}
+
+/* PRODUCTOS */
+
+.productos{
+    background: var(--gray-light);
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+.productos .titulo{
+    width: 70%;
+    font-size: 44px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.productos .producto{
+    position: relative;
+    width: 100%;
+}
+
+.productos .overlay{
+    width: 0;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--purple-light);
+    overflow: hidden;
+    transition: .5s ease;
+
+}
+
+.productos .producto:hover .overlay{
+width: 100%;
+opacity: .8;
+}
+
+.productos .producto .overlay-texto{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    /* para que todo se ponga en una linea */
+    white-space: nowrap;
+    color: var(--white);
+    font-size: 18px;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff
+
+}
+
+/* EL BOTON */
+
+.productos .btn-productos{
+    background: var(--purple-light);
+    color: #fff;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: .3s ease;
+}
+
+.productos .btn-productos:hover{
+background: transparent;
+border: 2px solid var(--purple-light);
+color: var(--purple-light)
+}
+
+/* separador */
+.separador{
+    width: 100%;
+    height: 250px;
+    background-image: url('../img/bg-separator.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  margin-bottom: 60px;
+}
+
+.separador p{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: Cambria, 'noto serif';
+    padding: 10px;
+}
+
+/* CERCA DE */
+
+.acerca-de{
+    margin-bottom: 60px;
+}
+
+/* GALERIA */
+
+.galeria{
+    margin-bottom: 60px;
+}
+
+.galeria img{
+    height: 100%;
+    width: 100%;
+    /* esto es para que la imagen se acomode sin perder su tamaño */
+    object-fit: cover;
+}
+
+/* footer */
+
+.contacto{
+    margin-bottom: 60px;
+}
+
+
+/* redes sociales */
+
+.redes-sociales{
+    padding: 10px;
+    background: var(--purple-light);
+}
+
+.redes-sociales img{
+    padding: 5px;
+    border-radius: 100%;
+    width: 70px;
+    transition: .3s ease all;
+}
+
+.redes-sociales img:hover{
+    transform: scale(1.2);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width:992px){
+    p{
+        font-size: 18px;
+    }
+
+    .contenido-header{
+        font-size: 60px;
+    }
+    .menu{
+        font-size: 18px;
+    }
+    .nosotros .titulo,
+    .productos .titulo{
+        font-size: 30px;
+    }
+}
